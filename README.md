@@ -25,51 +25,47 @@ Each D flip-flop in the circuit has a Data (D) input, a Clock (CLK) input, and a
 
 **Procedure**
 
-1.Declare a Verilog module named EXP11 with input ports clk, rst, sin, and an output port q.
-
-2.Declare input ports: clk for the clock signal, rst for the reset signal, and sin for the input signal. Also, declare the output port q as a 4-bit vector representing the state of flip-flops.
-
-3.Declare an internal register q as a 4-bit vector to store the state of the flip-flops.
-
-4.Create an always block that triggers on the positive edge of both the clock (clk) and the reset signal (rst), containing the following steps:
-
-5.If the reset signal is asserted (rst), assign q to 4'b0000 to reset all flip-flops to 0.
-
-6.If the reset signal is not asserted, assign the value of sin to the first flip-flop (q[0]) and shift the values of q to the right.
+    1.Initialize the shift register to a known state (e.g., all zeros).
+    2.Input a bit serially into the shift register.
+    3.Shift the contents of the register one position to the right (or left).
+    4.Output the shifted bit from the last stage of the register.
+    5.Repeat steps 2-4 for each bit you want to input and shift
 
 **PROGRAM**
 
 /* Program for flipflops and verify its truth table in quartus using Verilog programming.
-```
-Developed by:SHRIRAM VR
-RegisterNumber:212224040314
-module siso_10(clk, sin, q);
-input clk;
-input sin;
-output [3:0] q;
-reg [3:0] q;
-always @(posedge clk)
-begin
-q[0] <= sin;
-q[1] <= q[0];
-q[2] <= q[1];
-q[3] <= q[2];
-end
-endmodule
-```
+
+    module Verilog1(clk, sin, q);
+    input clk;
+    input sin;
+    output [3:0] q;
+    reg [3:0] q;
+    always @(posedge clk)
+    begin
+    q[0] <= sin;
+    q[1] <= q[0];
+    q[2] <= q[1];
+    q[3] <= q[2];
+    end
+    endmodule
+
+Developed bY :DHATCHAYANI R
+
+RegisterNumber:24007641
 
 */
 
 **RTL LOGIC FOR SISO Shift Register**
 
-![Screenshot 2025-05-07 110549](https://github.com/user-attachments/assets/44147154-be21-4111-89b5-3d09dbb5e4ab)
+![exp10 rtl](https://github.com/user-attachments/assets/35a6590e-342e-4bc9-94c3-38e87c311d65)
 
 
 **TIMING DIGRAMS FOR SISO Shift Register**
 
-![Screenshot 2025-05-07 110733](https://github.com/user-attachments/assets/2a2c84d3-c3a4-43ca-9a1a-b5eaec202c37)
+![WhatsApp Image 2024-12-14 at 21 43 22_940555cd](https://github.com/user-attachments/assets/06ec21aa-304b-431c-8cf3-a51bb75cd44d)
 
 
 **RESULTS**
 
-Thus,SISO Shift Register using verilog and validating their functionality using their functional tables has successful execution of the program.
+Thus the SISO Shift Register is implemented using verilog and validated their functionality using their functional tables
+
